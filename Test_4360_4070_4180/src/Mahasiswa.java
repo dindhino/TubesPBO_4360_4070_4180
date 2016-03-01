@@ -8,7 +8,7 @@
  *
  * @author dindhino
  */
-public class Mahasiswa {
+public class Mahasiswa extends Orang {
 
     private long NIM;
     private String Username;
@@ -16,6 +16,7 @@ public class Mahasiswa {
     private String cekPassword;
     private Kelas[] Pilihan;
     private int JumlahPilihan;
+    private int MaxPilihan;
 
     public long getNIM() {
         return NIM;
@@ -49,6 +50,15 @@ public class Mahasiswa {
         this.cekPassword = cekPassword;
     }
 
+    public int getMaxPilihan() {
+        return MaxPilihan;
+    }
+
+    public void setMaxPilihan(int MaxPilihan) {
+        this.MaxPilihan = MaxPilihan;
+        Pilihan = new Kelas[MaxPilihan];
+    }
+
     public Kelas getPilihan(int i) {
         return Pilihan[i];
     }
@@ -73,7 +83,7 @@ public class Mahasiswa {
             i++;
         }
         if (i == (Pilihan.length - 1)) {
-            JumlahPilihan--;
+            //JumlahPilihan--;
         } else {
             while (i < (Pilihan.length - 1))  {
                 Pilihan[i] = Pilihan[i + 1];

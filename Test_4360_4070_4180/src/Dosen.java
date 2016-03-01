@@ -8,7 +8,7 @@
  *
  * @author dindhino
  */
-public class Dosen {
+public class Dosen extends Orang {
 
     private long NIP;
     private String Username;
