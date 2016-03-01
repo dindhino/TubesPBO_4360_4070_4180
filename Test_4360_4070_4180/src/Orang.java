@@ -8,8 +8,8 @@
  *
  * @author dindhino
  */
-
 public abstract class Orang {
+
     private String name;
     private String tipe;
 
@@ -28,6 +28,5 @@ public abstract class Orang {
     public void setTipe(String tipe) {
         this.tipe = tipe;
     }
-    
-    
+
 }

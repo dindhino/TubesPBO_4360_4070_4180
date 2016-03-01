@@ -9,6 +9,7 @@
  * @author dindhino
  */
 public class Mahasiswa {
+
     private long NIM;
     private String Username;
     private String Password;
@@ -52,14 +53,33 @@ public class Mahasiswa {
         return Pilihan[i];
     }
 
-    public void setPilihan(Kelas plhn) {
+    public void addPilihan(Kelas plhn) {
         if (JumlahPilihan < Pilihan.length) {
             Pilihan[JumlahPilihan] = plhn;
             JumlahPilihan++;
-        }
-        else
-        {
+        } else {
             System.out.println("Pilihan Sudah Penuh");
+        }
+    }
+
+    public void removePilihan(Kelas plhn) {
+        for (int i = 0; i < Pilihan.length; i++) {
+            if (Pilihan[i] == plhn) {
+                Pilihan[i] = null;
+            }
+        }
+        int i = 0;
+        while ((i < Pilihan.length) && (Pilihan[i] != null)) {
+            i++;
+        }
+        if (i == (Pilihan.length - 1)) {
+            JumlahPilihan--;
+        } else {
+            while (i < (Pilihan.length - 1))  {
+                Pilihan[i] = Pilihan[i + 1];
+                i++;
+            }
+            JumlahPilihan--;
         }
     }
 
@@ -77,6 +97,6 @@ public class Mahasiswa {
 
     public void setJumlahPilihan(int JumlahPilihan) {
         this.JumlahPilihan = JumlahPilihan;
-    }  
-    
+    }
+
 }

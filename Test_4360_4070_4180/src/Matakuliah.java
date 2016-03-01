@@ -9,6 +9,7 @@
  * @author dindhino
  */
 public class Matakuliah {
+
     private String namaMK;
 
     public String getNamaMK() {
@@ -18,7 +19,5 @@ public class Matakuliah {
     public void setNamaMK(String namaMK) {
         this.namaMK = namaMK;
     }
-    
-    
-    
+
 }

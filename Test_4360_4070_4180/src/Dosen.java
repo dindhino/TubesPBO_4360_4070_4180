@@ -9,6 +9,7 @@
  * @author dindhino
  */
 public class Dosen {
+
     private long NIP;
     private String Username;
     private String Password;
@@ -45,5 +46,5 @@ public class Dosen {
     public void setCekPassword(String cekPassword) {
         this.cekPassword = cekPassword;
     }
-    
+
 }

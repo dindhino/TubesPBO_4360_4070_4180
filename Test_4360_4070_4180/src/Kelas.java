@@ -9,6 +9,7 @@
  * @author dindhino
  */
 public class Kelas {
+
     private Matakuliah mataKuliah;
     private Dosen dosen;
 
@@ -27,7 +28,5 @@ public class Kelas {
     public void setDosen(Dosen dosen) {
         this.dosen = dosen;
     }
-    
-    
-    
+
 }
