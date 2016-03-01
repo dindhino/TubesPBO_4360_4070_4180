@@ -83,7 +83,7 @@ public class Mahasiswa extends Orang {
             i++;
         }
         if (i == (Pilihan.length - 1)) {
-            //JumlahPilihan--;
+            JumlahPilihan--;
         } else {
             while (i < (Pilihan.length - 1))  {
                 Pilihan[i] = Pilihan[i + 1];

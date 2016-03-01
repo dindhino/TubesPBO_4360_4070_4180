@@ -63,7 +63,7 @@ public class Main {
         
         System.out.println("    ---- REMOVE 1 PILIHAN ----");
         
-        n.removePilihan(p);
+        n.removePilihan(q);
         
         for (int a=0; a<n.getJumlahPilihan(); a++) {
             System.out.println("    Pilihan Ke-" + (a+1) + " : "+ n.getPilihan(a).getMataKuliah().getNamaMK());
