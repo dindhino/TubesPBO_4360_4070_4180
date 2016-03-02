@@ -49,6 +49,7 @@ public class Main {
         
         
         System.out.println("Mahasiswa : " + n.getName());
+        System.out.println("");
         System.out.println("    ---- ADD 4 PILIHAN ----");
         
         n.addPilihan(k);
@@ -61,6 +62,7 @@ public class Main {
             System.out.println("        Dosen : " + n.getPilihan(a).getDosen().getName());
         }
         
+        System.out.println("");
         System.out.println("    ---- REMOVE 1 PILIHAN ----");
         
         n.removePilihan(q);
@@ -70,6 +72,7 @@ public class Main {
             System.out.println("        Dosen : " + n.getPilihan(a).getDosen().getName());
         }
         
+        System.out.println("");
         System.out.println("    ---- CEK ERROR ----");
         
         n.removePilihan(q);
