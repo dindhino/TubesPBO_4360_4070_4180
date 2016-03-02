@@ -75,20 +75,27 @@ public class Mahasiswa extends Orang {
     public void removePilihan(Kelas plhn) {
         for (int i = 0; i < Pilihan.length; i++) {
             if (Pilihan[i] == plhn) {
+                System.out.println("masuk ke if di for");
                 Pilihan[i] = null;
+                break;
+            }
+            else {
+                System.out.println("masuk ke else di for");
             }
         }
         int i = 0;
         while ((i < Pilihan.length) && (Pilihan[i] != null)) {
             i++;
         }
-        if (i == (Pilihan.length - 1)) {
+        if ((i == (Pilihan.length - 1)) && (Pilihan[i] == null)) {
+            System.out.println("Masuk ke if setelah while");
             JumlahPilihan--;
         } else {
-            while (i < (Pilihan.length - 1))  {
+            while (i < (Pilihan.length - 1)) {
                 Pilihan[i] = Pilihan[i + 1];
                 i++;
             }
+            System.out.println("Masuk ke else setelah while");
             JumlahPilihan--;
         }
     }

@@ -48,7 +48,6 @@ public class Main {
         n.setMaxPilihan(4);
         
         
-        System.out.println("Nama Dosen: " + d.getName());
         System.out.println("Mahasiswa : " + n.getName());
         System.out.println("    ---- ADD 4 PILIHAN ----");
         
@@ -59,6 +58,7 @@ public class Main {
 
         for (int a=0; a<n.getJumlahPilihan(); a++) {
             System.out.println("    Pilihan Ke-" + (a+1) + " : "+ n.getPilihan(a).getMataKuliah().getNamaMK());
+            System.out.println("        Dosen : " + n.getPilihan(a).getDosen().getName());
         }
         
         System.out.println("    ---- REMOVE 1 PILIHAN ----");
@@ -67,6 +67,16 @@ public class Main {
         
         for (int a=0; a<n.getJumlahPilihan(); a++) {
             System.out.println("    Pilihan Ke-" + (a+1) + " : "+ n.getPilihan(a).getMataKuliah().getNamaMK());
+            System.out.println("        Dosen : " + n.getPilihan(a).getDosen().getName());
+        }
+        
+        System.out.println("    ---- CEK ERROR ----");
+        
+        n.removePilihan(q);
+        
+        for (int a=0; a<n.getJumlahPilihan(); a++) {
+            System.out.println("    Pilihan Ke-" + (a+1) + " : "+ n.getPilihan(a).getMataKuliah().getNamaMK());
+            System.out.println("        Dosen : " + n.getPilihan(a).getDosen().getName());
         }
     }
     
