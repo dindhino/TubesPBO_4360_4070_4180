@@ -73,15 +73,16 @@ public class Mahasiswa extends Orang {
     }
 
     public void removePilihan(Kelas plhn) {
-        System.out.println("Pilihan.length: " + Pilihan.length);
-        System.out.println("Jumlah Pilihan: " + JumlahPilihan);
+        //System.out.println("Pilihan.length: " + Pilihan.length);
+        //System.out.println("Jumlah Pilihan: " + JumlahPilihan);
         for (int i = 0; i < JumlahPilihan; i++) {
             if (Pilihan[i] == plhn) {
-                System.out.println("masuk ke if di for");
+                //System.out.println("masuk ke if di for");
                 Pilihan[i] = null;
                 break;
             } else {
-                System.out.println("masuk ke else di for");
+                continue;
+                //System.out.println("masuk ke else di for");
             }
         }
 
@@ -89,21 +90,21 @@ public class Mahasiswa extends Orang {
 
         while ((i < JumlahPilihan) && (Pilihan[i] != null)) {
             i++;
-            System.out.println(i);
+            //System.out.println(i);
         }
 
         if ((i == (JumlahPilihan)) && (Pilihan[i-1] != null)) {
-            System.out.println("Masuk ke if setelah while");
+            //System.out.println("Masuk ke if setelah while");
         } else {
             if ((i == (JumlahPilihan)) && (Pilihan[i-1] == null)) {
-                System.out.println("Masuk ke else if setelah while");
+                //System.out.println("Masuk ke else if setelah while");
                 JumlahPilihan--;
             } else {
                 while (i < (JumlahPilihan - 1)) {
                     Pilihan[i] = Pilihan[i + 1];
                     i++;
                 }
-                System.out.println("Masuk ke else else setelah while");
+                //System.out.println("Masuk ke else else setelah while");
                 JumlahPilihan--;
             }
         }

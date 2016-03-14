@@ -52,16 +52,16 @@ public class Main {
         System.out.println("");
         System.out.println("    ---- ADD 4 PILIHAN ----");
 
-        System.out.println("ADD " + k.getMataKuliah().getNamaMK());
+        //System.out.println("ADD " + k.getMataKuliah().getNamaMK());
         n.addPilihan(k);
         
-        System.out.println("ADD " + l.getMataKuliah().getNamaMK());
+        //System.out.println("ADD " + l.getMataKuliah().getNamaMK());
         n.addPilihan(l);
         
-        System.out.println("ADD " + p.getMataKuliah().getNamaMK());
+        //System.out.println("ADD " + p.getMataKuliah().getNamaMK());
         n.addPilihan(p);
         
-        System.out.println("ADD " + q.getMataKuliah().getNamaMK());
+        //System.out.println("ADD " + q.getMataKuliah().getNamaMK());
         n.addPilihan(q);
 
         for (int a = 0; a < n.getJumlahPilihan(); a++) {
@@ -70,13 +70,13 @@ public class Main {
         }
 
         System.out.println("");
-        System.out.println("Press Any Key To Continue...");
-        new java.util.Scanner(System.in).nextLine();
+        //System.out.println("Press Any Key To Continue...");
+        //new java.util.Scanner(System.in).nextLine();
 
         System.out.println("");
         System.out.println("    ---- REMOVE 1 PILIHAN ----");
 
-        System.out.println("REMOVE " + q.getMataKuliah().getNamaMK());
+        //System.out.println("REMOVE " + q.getMataKuliah().getNamaMK());
         n.removePilihan(q); //k,l,p udah di coba juga
 
         for (int a = 0; a < n.getJumlahPilihan(); a++) {
@@ -85,13 +85,13 @@ public class Main {
         }
         
         System.out.println("");
-        System.out.println("Press Any Key To Continue...");
-        new java.util.Scanner(System.in).nextLine();
+        //System.out.println("Press Any Key To Continue...");
+        //new java.util.Scanner(System.in).nextLine();
 
         System.out.println("");
         System.out.println("    ---- CEK ERROR ----");
         
-        System.out.println("REMOVE " + q.getMataKuliah().getNamaMK());
+        //System.out.println("REMOVE " + q.getMataKuliah().getNamaMK());
         n.removePilihan(q); //k,l,p udah di coba juga
 
         for (int a = 0; a < n.getJumlahPilihan(); a++) {
