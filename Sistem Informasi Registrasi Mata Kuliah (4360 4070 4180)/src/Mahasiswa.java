@@ -93,20 +93,18 @@ public class Mahasiswa extends Orang {
             //System.out.println(i);
         }
 
-        if ((i == (JumlahPilihan)) && (Pilihan[i-1] != null)) {
+        if ((i == (JumlahPilihan)) && (Pilihan[i - 1] != null)) {
             //System.out.println("Masuk ke if setelah while");
+        } else if ((i == (JumlahPilihan)) && (Pilihan[i - 1] == null)) {
+            //System.out.println("Masuk ke else if setelah while");
+            JumlahPilihan--;
         } else {
-            if ((i == (JumlahPilihan)) && (Pilihan[i-1] == null)) {
-                //System.out.println("Masuk ke else if setelah while");
-                JumlahPilihan--;
-            } else {
-                while (i < (JumlahPilihan - 1)) {
-                    Pilihan[i] = Pilihan[i + 1];
-                    i++;
-                }
-                //System.out.println("Masuk ke else else setelah while");
-                JumlahPilihan--;
+            while (i < (JumlahPilihan - 1)) {
+                Pilihan[i] = Pilihan[i + 1];
+                i++;
             }
+            //System.out.println("Masuk ke else else setelah while");
+            JumlahPilihan--;
         }
     }
 
