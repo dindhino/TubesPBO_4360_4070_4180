@@ -9,9 +9,10 @@
  * @author dindhino
  */
 public class Driver {
+
     public static void main(String[] a) {
         Aplikasi app = new Aplikasi();
         app.menuLuar();
     }
-    
+
 }
