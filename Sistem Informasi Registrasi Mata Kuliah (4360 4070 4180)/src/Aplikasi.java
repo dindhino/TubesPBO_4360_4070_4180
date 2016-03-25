@@ -1,152 +1,262 @@
+
+import java.io.IOException;
+import static java.lang.System.exit;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author dininuraini, dindhino
  */
-import static java.lang.System.exit;
-import java.util.Scanner;
-
 public class Aplikasi {
 
-    private Dosen[] daftarDosen;
-    private Mahasiswa[] daftarMahasiswa;
-    private Kelas daftarKelas;
-    private Matakuliah[] daftarMatakuliah;
-    private int jmlMhs = 0;
-    private int jmlDosen = 0;
-    private int jmlMK = 0;
+    private ArrayList<Dosen> daftarDosen = new ArrayList<Dosen>();
+    private ArrayList<Mahasiswa> daftarMahasiswa = new ArrayList<Mahasiswa>();
+    private ArrayList<Kelas> daftarKelas = new ArrayList<Kelas>();
+    private ArrayList<Matakuliah> daftarMatakuliah = new ArrayList<Matakuliah>();
 
-    public void addDosen(Dosen dd) {
-        //edited by dindhino
-        daftarDosen = new Dosen[100];
-        if (jmlDosen < daftarDosen.length) {
-            this.daftarDosen[jmlDosen] = dd;
-            this.jmlDosen++;
-        } else {
-            System.out.println("Dosen Penuh");
-        }
-
+    /*======================================================== DOSEN ========================================================*/
+    public void addDosen(Dosen dsn) {
+        daftarDosen.add(dsn);
     }
 
-    public void addMahasiswa(Mahasiswa dm) {
-        //edited by dindhino
-        daftarMahasiswa = new Mahasiswa[100];
-        if (jmlMhs < daftarMahasiswa.length) {
-            this.daftarMahasiswa[jmlMhs] = dm;
-            this.jmlMhs++;
-        } else {
-            System.out.println("Mahasiswa Penuh");
-        }
-    }
-
-    public void addMatakuliah(Mahasiswa dmk) {
-        //edited by dindhino
-        daftarMahasiswa = new Mahasiswa[100];
-        if (jmlMK < daftarMatakuliah.length) {
-            this.daftarMahasiswa[jmlMK] = dmk;
-            this.jmlMK++;
-        } else {
-            System.out.println("Mata Kuliah Penuh");
-        }
-    }
-
-    public Mahasiswa getMahasiswa(long ID) {
-        //edited by dindhino
-        //return daftarMahasiswa;
-        Mahasiswa a = new Mahasiswa();
-        for (int i = 0; i < jmlMhs; i++) {
-            if (daftarMahasiswa[i].getNIM() == ID) {
-                a = daftarMahasiswa[i];
+    public Dosen getDosen(long id) {
+        Dosen a = new Dosen();
+        for (int i = 0; i < daftarDosen.size(); i++) {
+            if (daftarDosen.get(i).getNIP() == id) {
+                a = daftarDosen.get(i);
             } else {
                 continue;
             }
         }
+
         return a;
     }
 
-    public void deleteMahasiswa(Mahasiswa ID) {
-        //edited by dindhino
-        //jmlMhs--;
-        for (int i = 0; i < jmlMhs; i++) {
-            if (daftarMahasiswa[i] == ID) {
-                daftarMahasiswa[i] = null;
-                break;
+    public void deleteDosen(long id) {
+        for (int i = 0; i < daftarDosen.size(); i++) {
+            if (daftarDosen.get(i).getNIP() == id) {
+                daftarDosen.remove(daftarDosen.get(i));
+            } else {
+                continue;
+            }
+        }
+    }
+
+    /*=======================================================================================================================*/
+
+ /*======================================================= MAHASISWA =====================================================*/
+    public void addMahasiswa(Mahasiswa mhs) {
+        daftarMahasiswa.add(mhs);
+    }
+
+    public Mahasiswa getMahasiswa(long id) {
+        Mahasiswa a = new Mahasiswa();
+        for (int i = 0; i < daftarMahasiswa.size(); i++) {
+            if (daftarMahasiswa.get(i).getNIM() == id) {
+                a = daftarMahasiswa.get(i);
             } else {
                 continue;
             }
         }
 
-        int i = 0;
+        return a;
+    }
 
-        while ((i < jmlMhs) && (daftarMahasiswa[i] != null)) {
-            i++;
-        }
-
-        if ((i == (jmlMhs)) && (daftarMahasiswa[i - 1] != null)) {
-        } else if ((i == (jmlMhs)) && (daftarMahasiswa[i - 1] == null)) {
-            jmlMhs--;
-        } else {
-            while (i < (jmlMhs - 1)) {
-                daftarMahasiswa[i] = daftarMahasiswa[i + 1];
-                i++;
+    public void deleteMahasiswa(long id) {
+        for (int i = 0; i < daftarMahasiswa.size(); i++) {
+            if (daftarMahasiswa.get(i).getNIM() == id) {
+                daftarMahasiswa.remove(daftarMahasiswa.get(i));
+            } else {
+                continue;
             }
-            jmlMhs--;
         }
     }
 
-    /*=======================================================================================================================================*/
-    //added by dindhino
-    public Kelas getDaftarKelas() {
-        return daftarKelas;
+    /*=======================================================================================================================*/
+
+ /*========================================================= KELAS =======================================================*/
+    public void addKelas(Kelas kls) {
+        daftarKelas.add(kls);
     }
 
-    public void setDaftarKelas(Kelas daftarKelas) {
-        this.daftarKelas = daftarKelas;
+    public Kelas getKelas(String id) {
+        Kelas a = new Kelas();
+        for (int i = 0; i < daftarKelas.size(); i++) {
+            if (daftarKelas.get(i).getNamaKelas() == id) {
+                a = daftarKelas.get(i);
+            } else {
+                continue;
+            }
+        }
+
+        return a;
     }
 
-    public int getJmlMhs() {
-        return jmlMhs;
+    public void deleteKelas(String id) {
+        for (int i = 0; i < daftarKelas.size(); i++) {
+            if (daftarKelas.get(i).getNamaKelas() == id) {
+                daftarKelas.remove(daftarKelas.get(i));
+            } else {
+                continue;
+            }
+        }
     }
 
-    public void setJmlMhs(int jmlMhs) {
-        this.jmlMhs = jmlMhs;
+    /*=======================================================================================================================*/
+
+ /*======================================================= MAHASISWA =====================================================*/
+    public void addMatakuliah(Matakuliah mk) {
+        daftarMatakuliah.add(mk);
     }
 
-    public int getJmlDosen() {
-        return jmlDosen;
+    public Matakuliah getMatakuliah(String id) {
+        Matakuliah a = new Matakuliah();
+        for (int i = 0; i < daftarMatakuliah.size(); i++) {
+            if (daftarMatakuliah.get(i).getKodeMK() == id) {
+                a = daftarMatakuliah.get(i);
+            } else {
+                continue;
+            }
+        }
+
+        return a;
     }
 
-    public void setJmlDosen(int jmlDosen) {
-        this.jmlDosen = jmlDosen;
+    public void deleteMatakuliah(String id) {
+        for (int i = 0; i < daftarMatakuliah.size(); i++) {
+            if (daftarMatakuliah.get(i).getKodeMK() == id) {
+                daftarMatakuliah.remove(daftarMatakuliah.get(i));
+            } else {
+                continue;
+            }
+        }
     }
 
-    public int getJmlMK() {
-        return jmlMK;
+    /*=======================================================================================================================*/
+    public void clrscr() {
+        try {
+            if (System.getProperty("os.name").startsWith("Window")) {
+                Runtime.getRuntime().exec("cls");
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (IOException e) {
+            for (int i = 0; i < 1000; i++) {
+                System.out.println();
+            }
+        }
     }
 
-    public void setJmlMK(int jmlMK) {
-        this.jmlMK = jmlMK;
-    }
-
-    public int getPilihan() {
-        return pilihan;
-    }
-
-    public void setPilihan(int pilihan) {
-        this.pilihan = pilihan;
-    }
-
-    /*=============================================================================================================================*/
     Scanner input = new Scanner(System.in);
+    Scanner inputid = new Scanner(System.in);
     private int pilihan;
+    private String inpnama;
+    private String inppass;
+    private long inpid;
+    private int inptipe;
+    private String inpuname;
 
-    public void menuLuar() {
+    public void Registrasi() {
+        clrscr();
+        try {
+            input.nextLine();
+            System.out.print("Nama: ");
+            inpnama = input.nextLine();
+            System.out.println("Tipe: ");
+            System.out.println("      1. Dosen");
+            System.out.println("      2. Mahasiswa");
+            System.out.print("Pilih Tipe: ");
+            try {
+                inptipe = input.nextInt();
+                switch (inptipe) {
+                    case 1:
+                        System.out.print("NIP: ");
+                        inpid = inputid.nextLong();
+                        inpuname = "DSN" + inpid;
+                        System.out.println("Username: " + inpuname);
+                        break;
+                    case 2:
+                        System.out.print("NIM: ");
+                        inpid = inputid.nextLong();
+                        inpuname = "MHS" + inpid;
+                        System.out.println("Username: " + inpuname);
+                        break;
+                    default:
+                        System.out.println("Inputan Salah");
+                        input.nextLine();
+                        Registrasi();
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Terjadi Kesalahan");
+                input.nextLine();
+                Registrasi();
+            }
+            while ((inptipe != 1) && (inptipe != 2)) {
+
+                clrscr();
+                System.out.println("Input Tipe Salah");
+                System.out.println("Nama: " + inpnama);
+                System.out.println("Tipe: ");
+                System.out.println("      1. Dosen");
+                System.out.println("      2. Mahasiswa");
+                System.out.print("Pilih Tipe: ");
+                try {
+                    inptipe = input.nextInt();
+                    switch (inptipe) {
+                        case 1:
+                            System.out.print("NIP: ");
+                            inpid = inputid.nextLong();
+                            inpuname = "DSN" + inpid;
+                            System.out.println("Username: " + inpuname);
+                            break;
+                        case 2:
+                            System.out.print("NIM: ");
+                            inpid = inputid.nextLong();
+                            inpuname = "MHS" + inpid;
+                            System.out.println("Username: " + inpuname);
+                            break;
+                        default:
+                            System.out.println("Inputan Salah");
+                            input.nextLine();
+                            Registrasi();
+                            break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Terjadi Kesalahan");
+                    input.nextLine();
+                    Registrasi();
+                }
+            }
+            input.nextLine();
+            System.out.print("Password: ");
+            inppass = input.nextLine();
+
+            clrscr();
+            System.out.println("Registrasi Berhasil");
+            System.out.println("Username: " + inpuname);
+            System.out.println("Password: " + inppass);
+            input.nextLine();
+            input.nextLine();
+        } catch (Exception e) {
+            System.out.println("Terjadi Kesalahan");
+            input.nextLine();
+            inputid.nextLine();
+            inputid.nextLine();
+            Registrasi();
+        }
+    }
+
+    public void mainMenu() {
         //added by dindhino
+        clrscr();
+
         System.out.println("1. Login");
         System.out.println("2. Registrasi");
         System.out.println("3. Exit");
@@ -163,11 +273,8 @@ public class Aplikasi {
                     menuSatu();
                     break;
                 case 2:
-                    System.out.println("Maintenance");
-                    System.out.println("Press Any Key To Continue...");
-                    input.nextLine();
-                    input.nextLine();
-                    menuLuar();
+                    Registrasi();
+                    mainMenu();
                     break;
                 case 3:
                     exit(0);
@@ -175,18 +282,18 @@ public class Aplikasi {
                     System.out.println("Pilihan Salah");
                     System.out.println("Press Any Key To Continue...");
                     input.nextLine();
-                    input.nextLine();
-                    menuLuar();
+                    mainMenu();
                     break;
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
             input.nextLine();
-            menuLuar();
+            mainMenu();
         }
     }
 
     public void menuSatu() {
+        clrscr();
         System.out.println("1. Pilih Kelas");
         System.out.println("2. Exit ");
         System.out.print("Pilih Menu: ");
@@ -199,7 +306,7 @@ public class Aplikasi {
                     menuDua();
                     break;
                 case 2:
-                    exit(0);
+                    mainMenu();
                 default:
                     System.out.println("Pilihan Salah");
                     System.out.println("Press Any Key To Continue...");
@@ -216,6 +323,7 @@ public class Aplikasi {
     }
 
     public void menuDua() {
+        clrscr();
         System.out.println("1. IF-38-01");
         System.out.println("2. IF-38-02");
         System.out.println("3. IF-38-03");
@@ -232,7 +340,7 @@ public class Aplikasi {
             } else if (pilihan == 6) {
                 menuSatu();
             } else if (pilihan == 7) {
-                exit(0);
+                mainMenu();
             } else {
                 System.out.println("Inputan Salah");
                 System.out.println("Press Any Key To Continue...");
@@ -243,11 +351,12 @@ public class Aplikasi {
         } catch (Exception e) {
             System.out.println("Inputan Salah");
             input.nextLine();
-            menuDua();
+            mainMenu();
         }
     }
 
     public void menuTiga() {
+        clrscr();
         System.out.println("1. Algoritma Struktur Data");
         System.out.println("2. Basis Data Relasional");
         System.out.println("3. Dasar Algoritma Pemograman");
@@ -282,7 +391,7 @@ public class Aplikasi {
                     menuDua();
                     break;
                 case 8:
-                    exit(0);
+                    mainMenu();
                 default:
                     break;
             }

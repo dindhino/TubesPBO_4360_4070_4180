@@ -13,7 +13,17 @@ public class Dosen extends Orang {
     private long NIP;
     private String Username;
     private String Password;
-    private String cekPassword;
+
+    public Dosen(long NIP, String Nama) {
+        this.setName(Nama);
+        this.NIP = NIP;
+        this.Username = "DSN" + NIP;
+        this.setTipe("Dosen");
+    }
+
+    public Dosen() {
+        this.setTipe("Dosen");
+    }
 
     public long getNIP() {
         return NIP;
@@ -37,14 +47,6 @@ public class Dosen extends Orang {
 
     public void setPassword(String Password) {
         this.Password = Password;
-    }
-
-    public String getCekPassword() {
-        return cekPassword;
-    }
-
-    public void setCekPassword(String cekPassword) {
-        this.cekPassword = cekPassword;
     }
 
 }
