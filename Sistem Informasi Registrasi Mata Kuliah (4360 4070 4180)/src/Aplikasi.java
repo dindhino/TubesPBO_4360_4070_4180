@@ -216,7 +216,7 @@ public class Aplikasi {
         }
     }
 
-    public Mahasiswa login() {
+    public Mahasiswa loginMhs() {
         String usr, psw;
 
         System.out.print("Username: ");
@@ -225,6 +225,7 @@ public class Aplikasi {
         psw = new java.util.Scanner(System.in).nextLine();
 
         Mahasiswa cek = null;
+
         for (Mahasiswa x : daftarMahasiswa) {
             if ((x.getUsername().equals(usr)) && (x.getPassword().equals(psw))) {
                 cek = x;
@@ -232,13 +233,38 @@ public class Aplikasi {
             } else {
                 continue;
             }
-
         }
+
+        return cek;
+    }
+
+    public Dosen loginDsn() {
+        String usr, psw;
+
+        System.out.print("Username: ");
+        usr = new java.util.Scanner(System.in).nextLine();
+        System.out.print("Password: ");
+        psw = new java.util.Scanner(System.in).nextLine();
+
+        Dosen cek = null;
+
+        for (Dosen x : daftarDosen) {
+            if ((x.getUsername().equals(usr)) && (x.getPassword().equals(psw))) {
+                cek = x;
+                break;
+            } else {
+                continue;
+            }
+        }
+
         return cek;
     }
 
     public void mainMenu() {
         //added by dindhino
+
+        int pil;
+
         clrscr();
 
         System.out.println("1. Login");
@@ -250,19 +276,37 @@ public class Aplikasi {
             pilihan = new java.util.Scanner(System.in).nextInt();
             switch (pilihan) {
                 case 1:
-                    Mahasiswa login = login();
-                    if (login == null) {
-                        System.out.println("Data Kosong");
-                        new java.util.Scanner(System.in).nextLine();
-                        mainMenu();
-                        break;
-                    } else {
-                        if (login.getTipe().equals("Mahasiswa")) {
-                            menuSatu();
+                    System.out.println("1. Mahasiswa");
+                    System.out.println("2. Dosen");
+                    System.out.print("Pilih Menu: ");
+                    pil = new java.util.Scanner(System.in).nextInt();
+                    switch (pil) {
+                        case 1:
+                            Mahasiswa loginMhs = loginMhs();
+                            if (loginMhs == null) {
+                                System.out.println("Data Kosong");
+                                new java.util.Scanner(System.in).nextLine();
+                                mainMenu();
+                                break;
+                            } else if (loginMhs.getTipe().equals("Mahasiswa")) {
+                                menuSatu();
+                                break;
+                            }
                             break;
-                        }
-                        break;
+                        case 2:
+                            Dosen loginDsn = loginDsn();
+                            if (loginDsn == null) {
+                                System.out.println("Data Kosong");
+                                new java.util.Scanner(System.in).nextLine();
+                                mainMenu();
+                                break;
+                            } else if (loginDsn.getTipe().equals("Dosen")) {
+                                menuSatu();
+                                break;
+                            }
+                            break;
                     }
+                    break;
                 case 2:
                     Registrasi();
                     mainMenu();

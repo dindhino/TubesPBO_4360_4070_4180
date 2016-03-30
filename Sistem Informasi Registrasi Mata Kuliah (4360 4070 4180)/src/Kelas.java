@@ -67,4 +67,9 @@ public class Kelas {
             System.out.println("");
         }
     }
+
+    @Override
+    public String toString() {
+        return NamaKelas;
+    }
 }

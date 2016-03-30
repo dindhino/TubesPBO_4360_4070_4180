@@ -56,4 +56,9 @@ public class Matakuliah {
         }
     }
 
+    @Override
+    public String toString() {
+        return namaMK;
+    }
+
 }

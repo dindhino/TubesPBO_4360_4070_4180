@@ -23,9 +23,8 @@ public class Mahasiswa extends Orang {
         this.Username = "MHS" + NIM;
         this.Password = Password;
         this.setTipe("Mahasiswa");
-   }
+    }
 
-    
     public Mahasiswa(long NIM, String Nama) {
         this.NIM = NIM;
         this.Username = "MHS" + NIM;

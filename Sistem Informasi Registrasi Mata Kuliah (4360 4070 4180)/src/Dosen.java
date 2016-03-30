@@ -20,8 +20,8 @@ public class Dosen extends Orang {
         this.Username = "DSN" + NIP;
         this.Password = Password;
         this.setTipe("Dosen");
-   }
-    
+    }
+
     public Dosen(long NIP, String Nama) {
         this.setName(Nama);
         this.NIP = NIP;

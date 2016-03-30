@@ -29,4 +29,9 @@ public abstract class Orang {
         this.tipe = tipe;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
