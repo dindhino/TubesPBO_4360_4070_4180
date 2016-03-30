@@ -14,6 +14,14 @@ public class Dosen extends Orang {
     private String Username;
     private String Password;
 
+    public Dosen(String Nama, long NIP, String Password) {
+        this.setName(Nama);
+        this.NIP = NIP;
+        this.Username = "DSN" + NIP;
+        this.Password = Password;
+        this.setTipe("Dosen");
+   }
+    
     public Dosen(long NIP, String Nama) {
         this.setName(Nama);
         this.NIP = NIP;

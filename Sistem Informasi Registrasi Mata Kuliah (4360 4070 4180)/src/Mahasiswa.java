@@ -17,11 +17,20 @@ public class Mahasiswa extends Orang {
     private String Password;
     private ArrayList<Kelas> Pilihan = new ArrayList<Kelas>();
 
+    public Mahasiswa(String Nama, long NIM, String Password) {
+        this.setName(Nama);
+        this.NIM = NIM;
+        this.Username = "MHS" + NIM;
+        this.Password = Password;
+        this.setTipe("Mahasiswa");
+   }
+
+    
     public Mahasiswa(long NIM, String Nama) {
         this.NIM = NIM;
         this.Username = "MHS" + NIM;
         this.setName(Nama);
-        this.Username = "MHS" + NIM;
+        this.setTipe("Mahasiswa");
     }
 
     public Mahasiswa() {

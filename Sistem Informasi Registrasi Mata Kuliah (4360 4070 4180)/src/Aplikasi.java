@@ -153,8 +153,8 @@ public class Aplikasi {
         }
     }
 
-    Scanner input = new Scanner(System.in);
-    Scanner inputid = new Scanner(System.in);
+    //Scanner input = new Scanner(System.in);
+    //Scanner inputid = new Scanner(System.in);
     private int pilihan;
     private String inpnama;
     private String inppass;
@@ -165,92 +165,76 @@ public class Aplikasi {
     public void Registrasi() {
         clrscr();
         try {
-            input.nextLine();
+
             System.out.print("Nama: ");
-            inpnama = input.nextLine();
+            inpnama = new java.util.Scanner(System.in).nextLine();
+
             System.out.println("Tipe: ");
             System.out.println("      1. Dosen");
             System.out.println("      2. Mahasiswa");
             System.out.print("Pilih Tipe: ");
-            try {
-                inptipe = input.nextInt();
-                switch (inptipe) {
-                    case 1:
-                        System.out.print("NIP: ");
-                        inpid = inputid.nextLong();
-                        inpuname = "DSN" + inpid;
-                        System.out.println("Username: " + inpuname);
-                        break;
-                    case 2:
-                        System.out.print("NIM: ");
-                        inpid = inputid.nextLong();
-                        inpuname = "MHS" + inpid;
-                        System.out.println("Username: " + inpuname);
-                        break;
-                    default:
-                        System.out.println("Inputan Salah");
-                        input.nextLine();
-                        Registrasi();
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Terjadi Kesalahan");
-                input.nextLine();
-                Registrasi();
-            }
-            while ((inptipe != 1) && (inptipe != 2)) {
-
-                clrscr();
-                System.out.println("Input Tipe Salah");
-                System.out.println("Nama: " + inpnama);
-                System.out.println("Tipe: ");
-                System.out.println("      1. Dosen");
-                System.out.println("      2. Mahasiswa");
-                System.out.print("Pilih Tipe: ");
-                try {
-                    inptipe = input.nextInt();
-                    switch (inptipe) {
-                        case 1:
-                            System.out.print("NIP: ");
-                            inpid = inputid.nextLong();
-                            inpuname = "DSN" + inpid;
-                            System.out.println("Username: " + inpuname);
-                            break;
-                        case 2:
-                            System.out.print("NIM: ");
-                            inpid = inputid.nextLong();
-                            inpuname = "MHS" + inpid;
-                            System.out.println("Username: " + inpuname);
-                            break;
-                        default:
-                            System.out.println("Inputan Salah");
-                            input.nextLine();
-                            Registrasi();
-                            break;
-                    }
-                } catch (Exception e) {
-                    System.out.println("Terjadi Kesalahan");
-                    input.nextLine();
+            inptipe = new java.util.Scanner(System.in).nextInt();
+            switch (inptipe) {
+                case 1:
+                    System.out.print("NIP: ");
+                    inpid = new java.util.Scanner(System.in).nextLong();
+                    inpuname = "DSN" + inpid;
+                    System.out.println("Username: " + inpuname);
+                    System.out.print("Password: ");
+                    inppass = new java.util.Scanner(System.in).nextLine();
+                    Dosen a = new Dosen(inpnama, inpid, inppass);
+                    daftarDosen.add(a);
+                    break;
+                case 2:
+                    System.out.print("NIM: ");
+                    inpid = new java.util.Scanner(System.in).nextLong();
+                    inpuname = "MHS" + inpid;
+                    System.out.println("Username: " + inpuname);
+                    System.out.print("Password: ");
+                    inppass = new java.util.Scanner(System.in).nextLine();
+                    Mahasiswa b = new Mahasiswa(inpnama, inpid, inppass);
+                    daftarMahasiswa.add(b);
+                    break;
+                default:
+                    System.out.println("Inputan Salah");
+                    new java.util.Scanner(System.in).nextLine();
                     Registrasi();
-                }
+                    break;
             }
-            input.nextLine();
-            System.out.print("Password: ");
-            inppass = input.nextLine();
-
             clrscr();
+
             System.out.println("Registrasi Berhasil");
             System.out.println("Username: " + inpuname);
             System.out.println("Password: " + inppass);
-            input.nextLine();
-            input.nextLine();
+
+            new java.util.Scanner(System.in).nextLine();
+
         } catch (Exception e) {
             System.out.println("Terjadi Kesalahan");
-            input.nextLine();
-            inputid.nextLine();
-            inputid.nextLine();
+            new java.util.Scanner(System.in).nextLine();
             Registrasi();
         }
+    }
+
+    public Mahasiswa login() {
+        String usr, psw;
+
+        System.out.print("Username: ");
+        usr = new java.util.Scanner(System.in).nextLine();
+        System.out.print("Password: ");
+        psw = new java.util.Scanner(System.in).nextLine();
+
+        Mahasiswa cek = null;
+        for (Mahasiswa x : daftarMahasiswa) {
+            if ((x.getUsername().equals(usr)) && (x.getPassword().equals(psw))) {
+                cek = x;
+                break;
+            } else {
+                continue;
+            }
+
+        }
+        return cek;
     }
 
     public void mainMenu() {
@@ -263,15 +247,22 @@ public class Aplikasi {
         System.out.print("Pilih Menu: ");
 
         try {
-            pilihan = input.nextInt();
+            pilihan = new java.util.Scanner(System.in).nextInt();
             switch (pilihan) {
                 case 1:
-                    System.out.println("Asumsi: Sudah Login");
-                    System.out.println("Press Any Key To Continue...");
-                    input.nextLine();
-                    input.nextLine();
-                    menuSatu();
-                    break;
+                    Mahasiswa login = login();
+                    if (login == null) {
+                        System.out.println("Data Kosong");
+                        new java.util.Scanner(System.in).nextLine();
+                        mainMenu();
+                        break;
+                    } else {
+                        if (login.getTipe().equals("Mahasiswa")) {
+                            menuSatu();
+                            break;
+                        }
+                        break;
+                    }
                 case 2:
                     Registrasi();
                     mainMenu();
@@ -281,13 +272,13 @@ public class Aplikasi {
                 default:
                     System.out.println("Pilihan Salah");
                     System.out.println("Press Any Key To Continue...");
-                    input.nextLine();
+                    new java.util.Scanner(System.in).nextLine();
                     mainMenu();
                     break;
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
-            input.nextLine();
+            new java.util.Scanner(System.in).nextLine();
             mainMenu();
         }
     }
@@ -299,7 +290,7 @@ public class Aplikasi {
         System.out.print("Pilih Menu: ");
 
         try {
-            pilihan = input.nextInt();
+            pilihan = new java.util.Scanner(System.in).nextInt();
             switch (pilihan) {
                 case 1:
                     System.out.println("daftarMahasiswa Kelas");
@@ -310,14 +301,14 @@ public class Aplikasi {
                 default:
                     System.out.println("Pilihan Salah");
                     System.out.println("Press Any Key To Continue...");
-                    input.nextLine();
-                    input.nextLine();
+                    new java.util.Scanner(System.in).nextLine();
+                    new java.util.Scanner(System.in).nextLine();
                     menuSatu();
                     break;
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
-            input.nextLine();
+            new java.util.Scanner(System.in).nextLine();
             menuSatu();
         }
     }
@@ -333,7 +324,7 @@ public class Aplikasi {
         System.out.println("7. Exit");
         System.out.print("Pilih Menu: ");
         try {
-            pilihan = input.nextInt();
+            pilihan = new java.util.Scanner(System.in).nextInt();
             if ((pilihan >= 1) && (pilihan <= 5)) {
                 System.out.println("daftarMahasiswa Mata Kuliah");
                 menuTiga();
@@ -344,13 +335,13 @@ public class Aplikasi {
             } else {
                 System.out.println("Inputan Salah");
                 System.out.println("Press Any Key To Continue...");
-                input.nextLine();
-                input.nextLine();
+                new java.util.Scanner(System.in).nextLine();
+                new java.util.Scanner(System.in).nextLine();
                 menuDua();
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
-            input.nextLine();
+            new java.util.Scanner(System.in).nextLine();
             mainMenu();
         }
     }
@@ -367,25 +358,37 @@ public class Aplikasi {
         System.out.println("8. Exit");
         System.out.print("Pilih Menu: ");
         try {
-            pilihan = input.nextInt();
+            pilihan = new java.util.Scanner(System.in).nextInt();
             switch (pilihan) {
                 case 1:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Algoritma Struktur Data");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuSatu();
                     break;
                 case 2:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Basis Data Relasional");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuSatu();
                     break;
                 case 3:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Dasar Algoritma Pemograman");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuSatu();
                     break;
                 case 4:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Bahasa Indonesia");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuSatu();
                     break;
                 case 5:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Bahasa Inggris");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuSatu();
                     break;
                 case 6:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Basis Data Relasional");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuSatu();
                     break;
                 case 7:
                     menuDua();
@@ -397,7 +400,7 @@ public class Aplikasi {
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
-            input.nextLine();
+            new java.util.Scanner(System.in).nextLine();
             menuTiga();
         }
     }
