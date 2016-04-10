@@ -49,7 +49,11 @@ public class Matakuliah {
         dosenPengampu.remove(dsnpgm);
     }
 
-    public void getDosenPengampu() {
+    public ArrayList<Dosen> getDosenPengampu() {
+        return dosenPengampu;
+    }
+
+    public void getDosenPengampuNama() {
         for (int i = 0; i < dosenPengampu.size(); i++) {
             System.out.print(dosenPengampu.get(i).getName());
             System.out.println("");

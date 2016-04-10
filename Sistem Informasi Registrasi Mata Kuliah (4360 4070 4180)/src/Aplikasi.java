@@ -161,6 +161,8 @@ public class Aplikasi {
     private long inpid;
     private int inptipe;
     private String inpuname;
+    private Dosen dsnlgn;
+    private Mahasiswa mhslgn;
 
     public void Registrasi() {
         clrscr();
@@ -269,7 +271,7 @@ public class Aplikasi {
 
         System.out.println("1. Login");
         System.out.println("2. Registrasi");
-        System.out.println("3. Exit");
+        System.out.println("3. Cancel");
         System.out.print("Pilih Menu: ");
 
         try {
@@ -289,7 +291,8 @@ public class Aplikasi {
                                 mainMenu();
                                 break;
                             } else if (loginMhs.getTipe().equals("Mahasiswa")) {
-                                menuSatu();
+                                mhslgn = loginMhs;
+                                menuUtama();
                                 break;
                             }
                             break;
@@ -301,7 +304,8 @@ public class Aplikasi {
                                 mainMenu();
                                 break;
                             } else if (loginDsn.getTipe().equals("Dosen")) {
-                                menuSatu();
+                                dsnlgn = loginDsn;
+                                menuUtama();
                                 break;
                             }
                             break;
@@ -327,10 +331,70 @@ public class Aplikasi {
         }
     }
 
-    public void menuSatu() {
+    public void menuDosen() {
+        clrscr();
+        System.out.println("1. Lihat Kelas");
+        System.out.println("2. Lihat Matakuliah");
+        System.out.println("3. Lihat Mahasiswa");
+        System.out.println("4. Exit");
+        System.out.println("Pilih Menu: ");
+
+        try {
+            pilihan = new java.util.Scanner(System.in).nextInt();
+            switch (pilihan) {
+                case 1:
+                    for (Kelas kls : daftarKelas) {
+                        for (Dosen dsn : kls.getDosen()) {
+                            if (dsn.equals(dsnlgn)) {
+                                System.out.println(kls);
+                            }
+                        }
+                    }
+                    System.out.println("Press Any Key To Continue...");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuDosen();
+                    break;
+                case 2:
+                    for (Matakuliah mk : daftarMatakuliah) {
+                        for (Dosen dsn : mk.getDosenPengampu()) {
+                            if (dsn.equals(dsnlgn)) {
+                                System.out.println(mk);
+                            }
+                        }
+                    }
+                    System.out.println("Press Any Key To Continue...");
+                    new java.util.Scanner(System.in).nextLine();
+                    menuDosen();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    mainMenu();
+                    break;
+                default:
+                    System.out.println("Pilihan Salah");
+                    System.out.println("Press Any Key To Continue...");
+                    new java.util.Scanner(System.in).nextLine();
+                    new java.util.Scanner(System.in).nextLine();
+                    menuDosen();
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Inputan Salah");
+            new java.util.Scanner(System.in).nextLine();
+            menuDosen();
+        }
+    }
+
+    public void menuUtama() {
         clrscr();
         System.out.println("1. Pilih Kelas");
-        System.out.println("2. Exit ");
+        System.out.println("2. Lihat Kelas");
+        System.out.println("3. Edit/Remove Kelas");
+        System.out.println("4. Pilih Matakuliah");
+        System.out.println("5. Lihat Matakuliah");
+        System.out.println("6. Edit/Remove Matakuliah");
+        System.out.println("7. Exit ");
         System.out.print("Pilih Menu: ");
 
         try {
@@ -338,26 +402,42 @@ public class Aplikasi {
             switch (pilihan) {
                 case 1:
                     System.out.println("daftarMahasiswa Kelas");
-                    menuDua();
+                    menuPilihKelas();
                     break;
                 case 2:
+                    menuPilihKelas();
+                    break;
+                case 3:
+                    menuPilihKelas();
+                    break;
+                case 4:
+                    menuPilihMK();
+                    break;
+                case 5:
+                    menuPilihMK();
+                    break;
+                case 6:
+                    menuPilihMK();
+                    break;
+                case 7:
                     mainMenu();
+                    break;
                 default:
                     System.out.println("Pilihan Salah");
                     System.out.println("Press Any Key To Continue...");
                     new java.util.Scanner(System.in).nextLine();
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
             new java.util.Scanner(System.in).nextLine();
-            menuSatu();
+            menuUtama();
         }
     }
 
-    public void menuDua() {
+    public void menuPilihKelas() {
         clrscr();
         System.out.println("1. IF-38-01");
         System.out.println("2. IF-38-02");
@@ -371,9 +451,9 @@ public class Aplikasi {
             pilihan = new java.util.Scanner(System.in).nextInt();
             if ((pilihan >= 1) && (pilihan <= 5)) {
                 System.out.println("daftarMahasiswa Mata Kuliah");
-                menuTiga();
+                menuPilihMK();
             } else if (pilihan == 6) {
-                menuSatu();
+                menuUtama();
             } else if (pilihan == 7) {
                 mainMenu();
             } else {
@@ -381,7 +461,7 @@ public class Aplikasi {
                 System.out.println("Press Any Key To Continue...");
                 new java.util.Scanner(System.in).nextLine();
                 new java.util.Scanner(System.in).nextLine();
-                menuDua();
+                menuPilihKelas();
             }
         } catch (Exception e) {
             System.out.println("Inputan Salah");
@@ -390,7 +470,7 @@ public class Aplikasi {
         }
     }
 
-    public void menuTiga() {
+    public void menuPilihMK() {
         clrscr();
         System.out.println("1. Algoritma Struktur Data");
         System.out.println("2. Basis Data Relasional");
@@ -407,35 +487,35 @@ public class Aplikasi {
                 case 1:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Algoritma Struktur Data");
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
                 case 2:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Basis Data Relasional");
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
                 case 3:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Dasar Algoritma Pemograman");
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
                 case 4:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Bahasa Indonesia");
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
                 case 5:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Bahasa Inggris");
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
                 case 6:
                     System.out.println("Anda Telah Menambahkan Mata Kuliah Basis Data Relasional");
                     new java.util.Scanner(System.in).nextLine();
-                    menuSatu();
+                    menuUtama();
                     break;
                 case 7:
-                    menuDua();
+                    menuPilihKelas();
                     break;
                 case 8:
                     mainMenu();
@@ -445,7 +525,7 @@ public class Aplikasi {
         } catch (Exception e) {
             System.out.println("Inputan Salah");
             new java.util.Scanner(System.in).nextLine();
-            menuTiga();
+            menuPilihMK();
         }
     }
 }

@@ -61,7 +61,11 @@ public class Kelas {
         }
     }
 
-    public void getDosen() {
+    public ArrayList<Dosen> getDosen() {
+        return dosen;
+    }
+
+    public void getDosenName() {
         for (int i = 0; i < dosen.size(); i++) {
             System.out.print(dosen.get(i).getName());
             System.out.println("");
