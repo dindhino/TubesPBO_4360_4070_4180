@@ -5,6 +5,13 @@
  */
 package View;
 
+import java.awt.Component;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author dindhino
@@ -87,40 +94,45 @@ public class LoginMhs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    public JButton getBtnLogin() {
+        return btnLogin;
+    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginMhs().setVisible(true);
-            }
-        });
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public String getUsername() {
+        return tfUsername.getText();
+    }
+
+    public void setUsername(String s) {
+        tfUsername.setText(s);
+    }
+
+    public String getPassword() {
+        return pfPassword.getText();
+    }
+
+    public void setPassword(String s) {
+        pfPassword.setText(s);
+    }
+
+    public void addListener(ActionListener e) {
+        btnLogin.addActionListener(e);
+        btnCancel.addActionListener(e);
+    }
+
+    public JTextField getTfUsername() {
+        return tfUsername;
+    }
+
+    public JPasswordField getPfPassword() {
+        return pfPassword;
+    }
+
+    public void showMessage(Component c, String s) {
+        JOptionPane.showMessageDialog(c, s);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

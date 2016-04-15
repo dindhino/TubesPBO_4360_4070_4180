@@ -5,7 +5,7 @@
  */
 package Driver;
 
-import Model.Aplikasi;
+import Model.AplikasiAwal;
 
 /**
  *
@@ -15,7 +15,7 @@ import Model.Aplikasi;
 public class Driver {
 
     public static void main(String[] a) {
-        Aplikasi app = new Aplikasi();
+        AplikasiAwal app = new AplikasiAwal();
         app.mainMenu();
     }
 

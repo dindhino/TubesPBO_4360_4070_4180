@@ -6,6 +6,7 @@
 package Database;
 
 import Model.Dosen;
+import Model.Mahasiswa;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -75,4 +76,48 @@ public class Database {
         }
         return listId.toArray(new String[0]);
     }
+    
+    
+    public void saveMahasiswa(Mahasiswa m) {
+        try {
+            String query = "INSERT INTO `mahasiswa`(`nama`, `tipe`, `nim`,`username`,`password`) VALUES ("
+                    + "'" + m.getName() + "',"
+                    + "'" + m.getTipe() + "',"
+                    + "'" + m.getNIM() + "',"
+                    + "'" + m.getUsername() + "',"
+                    + "'" + m.getPassword() + "')";
+            ResultSet rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Mahasiswa getMahasiswa(int nim) {
+        Mahasiswa m = null;
+        try {
+            String query = "SELECT * FROM `mahasiswa` WHERE `nim` = " + nim;
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                m = new Mahasiswa(rs.getLong(3), rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return m;
+    }
+
+    public String[] getListNIMMahasiswa() {
+        ArrayList<String> listId = new ArrayList<>();
+        try {
+            String query = "SELECT nim FROM `mahasiswa`";
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listId.add(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return listId.toArray(new String[0]);
+    }
+    
 }
