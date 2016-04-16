@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Database {
 
-    private String server = "jdbc:mysql://localhost:3306/tubes", dbuser = "root", dbpass = "";
+    private String server = "jdbc:mysql://localhost:3306/tubespbo", dbuser = "root", dbpass = "";
     private Statement st;
     private Connection con;
 

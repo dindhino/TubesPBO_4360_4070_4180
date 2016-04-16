@@ -29,6 +29,12 @@ public class Aplikasi {
     private ArrayList<Matakuliah> daftarMatakuliah = new ArrayList<Matakuliah>();
     Database con = new Database();
 
+    public Aplikasi() {
+        con.connect();
+    }
+    
+    
+
     /*======================================================== DOSEN ========================================================*/
     public void addDosen(Dosen dsn) {
         daftarDosen.add(dsn);

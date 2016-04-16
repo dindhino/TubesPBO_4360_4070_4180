@@ -5,6 +5,8 @@
  */
 package Driver;
 
+import Controller.ControllerMainMenu;
+import Model.Aplikasi;
 import Model.AplikasiAwal;
 
 /**
@@ -15,8 +17,10 @@ import Model.AplikasiAwal;
 public class Driver {
 
     public static void main(String[] a) {
-        AplikasiAwal app = new AplikasiAwal();
-        app.mainMenu();
+        //AplikasiAwal app = new AplikasiAwal();
+        //app.mainMenu();
+        Aplikasi model = new Aplikasi();
+        new ControllerMainMenu(model);
     }
 
 }
