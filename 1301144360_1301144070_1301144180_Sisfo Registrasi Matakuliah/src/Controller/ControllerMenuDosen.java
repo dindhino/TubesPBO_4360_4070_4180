@@ -7,12 +7,14 @@ package Controller;
 
 import Model.Aplikasi;
 import View.MenuDosen;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author dindhino
  */
-public class ControllerMenuDosen {
+public class ControllerMenuDosen implements ActionListener {
     Aplikasi model;
     MenuDosen view;
 
@@ -20,6 +22,17 @@ public class ControllerMenuDosen {
         this.model = model;
         view = new MenuDosen();
         view.setVisible(true);
+        view.addListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        
+        if (source.equals(view.getBtnLogout())) {
+            new ControllerMainMenu(model);
+            view.dispose();
+        }
     }
     
     

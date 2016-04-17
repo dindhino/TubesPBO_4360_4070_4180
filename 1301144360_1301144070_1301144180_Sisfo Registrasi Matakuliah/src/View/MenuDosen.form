@@ -100,7 +100,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID"/>
+        <Property name="text" type="java.lang.String" value="NIP"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTipe">
@@ -143,7 +143,7 @@
         <Component class="javax.swing.JTable" name="tblDaftarMhs">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="100">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="Nama Mahasiswa" type="java.lang.Object"/>
                 <Column editable="true" title="NIM" type="java.lang.Object"/>
                 <Column editable="true" title="Matakuliah" type="java.lang.Object"/>
