@@ -34,7 +34,7 @@ public class ControllerLoginMhs implements ActionListener {
             String unm = view.getUsername();
             String pwd = view.getPassword();
             if (unm.equals(pwd)) {
-                new ControllerMainMenu(model);
+                new ControllerMenuMahasiswa(model);
                 view.dispose();
             } else {
                 JOptionPane.showMessageDialog(view, "Username atau Password salah");

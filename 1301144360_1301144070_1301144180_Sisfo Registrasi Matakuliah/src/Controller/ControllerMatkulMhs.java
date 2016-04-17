@@ -6,22 +6,22 @@
 package Controller;
 
 import Model.Aplikasi;
-import View.MainMenu;
+import View.Matkulmhs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.System.exit;
 
 /**
  *
  * @author dindhino
  */
-public class ControllerMainMenu implements ActionListener {
+public class ControllerMatkulMhs implements ActionListener {
+    
     Aplikasi model;
-    MainMenu view;
+    Matkulmhs view;
 
-    public ControllerMainMenu(Aplikasi model) {
+    public ControllerMatkulMhs(Aplikasi model) {
         this.model = model;
-        view = new MainMenu();
+        view = new Matkulmhs();
         view.setVisible(true);
         view.addListener(this);
     }
@@ -30,14 +30,9 @@ public class ControllerMainMenu implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         
-        if (source.equals(view.getBtnLogin())) {
-            new ControllerDorm(model);
+        if (source.equals(view.getBtnLogout())) {
+            new ControllerMainMenu(model);
             view.dispose();
-        } else if (source.equals(view.getBtnReg())) {
-            new ControllerSignUp(model);
-            view.dispose();
-        } else if (source.equals(view.getBtnExit())) {
-            exit(0);
         }
     }
     
