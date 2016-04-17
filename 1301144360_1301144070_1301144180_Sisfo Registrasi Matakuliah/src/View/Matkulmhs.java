@@ -35,7 +35,7 @@ public class Matkulmhs extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblforName = new javax.swing.JLabel();
         lblForNim = new javax.swing.JLabel();
-        lblforMhs = new javax.swing.JLabel();
+        lblforTipe = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,7 +53,7 @@ public class Matkulmhs extends javax.swing.JFrame {
 
         lblForNim.setText(" ");
 
-        lblforMhs.setText(" ");
+        lblforTipe.setText(" ");
 
         jLabel7.setText("Mata Kuliah yang Diambil");
 
@@ -92,7 +92,7 @@ public class Matkulmhs extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(lblforName, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                                             .addComponent(lblForNim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblforMhs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(lblforTipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(jLabel7))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
@@ -114,7 +114,7 @@ public class Matkulmhs extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lblforMhs))
+                    .addComponent(lblforTipe))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
@@ -129,6 +129,18 @@ public class Matkulmhs extends javax.swing.JFrame {
         return btnLogout;
     }
     
+    public void setLblForName(String lblForName) {
+        this.lblforName.setText(lblForName);
+    }
+
+    public void setLblForTipe(String lblForTipe) {
+        this.lblforTipe.setText(lblForTipe);
+    }
+
+    public void setLblForID(long lblID) {
+        this.lblForNim.setText(Long.toString(lblID));
+    }
+    
     public void addListener(ActionListener e) {
         btnLogout.addActionListener(e);
     }
@@ -141,8 +153,8 @@ public class Matkulmhs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblForNim;
-    private javax.swing.JLabel lblforMhs;
     private javax.swing.JLabel lblforName;
+    private javax.swing.JLabel lblforTipe;
     private javax.swing.JTable tblMk;
     // End of variables declaration//GEN-END:variables
 }

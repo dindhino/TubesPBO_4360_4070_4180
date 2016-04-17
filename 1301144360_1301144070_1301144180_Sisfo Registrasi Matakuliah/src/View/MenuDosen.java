@@ -139,76 +139,16 @@ public class MenuDosen extends javax.swing.JFrame {
         this.btnLogout = btnLogout;
     }
 
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
+    public void setLblForName(String lblForName) {
+        this.lblForName.setText(lblForName);
     }
 
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
+    public void setLblForTipe(String lblForTipe) {
+        this.lblForTipe.setText(lblForTipe);
     }
 
-    public JLabel getLblForId() {
-        return lblForId;
-    }
-
-    public void setLblForId(JLabel lblForId) {
-        this.lblForId = lblForId;
-    }
-
-    public JLabel getLblForName() {
-        return lblForName;
-    }
-
-    public void setLblForName(JLabel lblForName) {
-        this.lblForName = lblForName;
-    }
-
-    public JLabel getLblForTipe() {
-        return lblForTipe;
-    }
-
-    public void setLblForTipe(JLabel lblForTipe) {
-        this.lblForTipe = lblForTipe;
-    }
-
-    public JLabel getLblID() {
-        return lblID;
-    }
-
-    public void setLblID(JLabel lblID) {
-        this.lblID = lblID;
-    }
-
-    public JLabel getLblNama() {
-        return lblNama;
-    }
-
-    public void setLblNama(JLabel lblNama) {
-        this.lblNama = lblNama;
-    }
-
-    public JLabel getLblTipe() {
-        return lblTipe;
-    }
-
-    public void setLblTipe(JLabel lblTipe) {
-        this.lblTipe = lblTipe;
-    }
-
-    public JLabel getLbldaftar() {
-        return lbldaftar;
-    }
-
-    public void setLbldaftar(JLabel lbldaftar) {
-        this.lbldaftar = lbldaftar;
-    }
-
-    public JTable getTblDaftarMhs() {
-        return tblDaftarMhs;
-    }
-
-    public void setTblDaftarMhs(JTable tblDaftarMhs) {
-        this.tblDaftarMhs = tblDaftarMhs;
+    public void setLblForID(long lblID) {
+        this.lblForId.setText(Long.toString(lblID));
     }
     
     public void addListener(ActionListener e) {

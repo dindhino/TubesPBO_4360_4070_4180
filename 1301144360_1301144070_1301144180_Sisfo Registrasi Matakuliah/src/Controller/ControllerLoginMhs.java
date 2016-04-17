@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.Aplikasi;
+import Model.Mahasiswa;
 import View.LoginMhs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 public class ControllerLoginMhs implements ActionListener {
     Aplikasi model;
     LoginMhs view;
+    Mahasiswa m;
 
     public ControllerLoginMhs(Aplikasi model) {
         this.model = model;
@@ -33,8 +35,9 @@ public class ControllerLoginMhs implements ActionListener {
         if (source.equals(view.getBtnLogin())) {
             String unm = view.getUsername();
             String pwd = view.getPassword();
-            if (unm.equals(pwd)) {
-                new ControllerMenuMahasiswa(model);
+            m = model.getMahasiswaByUsrnm(unm);
+            if (m != null) {
+                new ControllerMenuMahasiswa(model, m);
                 view.dispose();
             } else {
                 JOptionPane.showMessageDialog(view, "Username atau Password salah");

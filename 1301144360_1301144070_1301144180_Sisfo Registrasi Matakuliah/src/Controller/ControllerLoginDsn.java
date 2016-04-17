@@ -5,7 +5,9 @@
  */
 package Controller;
 
+import Database.Database;
 import Model.Aplikasi;
+import Model.Dosen;
 import View.LoginDsn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,7 @@ import javax.swing.JOptionPane;
 public class ControllerLoginDsn implements ActionListener {
     Aplikasi model;
     LoginDsn view;
+    Dosen d;
 
     public ControllerLoginDsn(Aplikasi model) {
         this.model = model;
@@ -33,8 +36,9 @@ public class ControllerLoginDsn implements ActionListener {
         if (source.equals(view.getBtnLogin())) {
             String unm = view.getUsername();
             String pwd = view.getPassword();
-            if (unm.equals(pwd)) {
-                new ControllerMenuDosen(model);
+            d = model.getDosenByUsrnm(unm);
+            if (d != null) {
+                new ControllerMenuDosen(model, d);
                 view.dispose();
             } else {
                 JOptionPane.showMessageDialog(view, "Username atau Password salah");

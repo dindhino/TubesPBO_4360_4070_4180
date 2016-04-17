@@ -6,9 +6,11 @@
 package Controller;
 
 import Model.Aplikasi;
+import Model.Dosen;
 import View.MenuDosen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,6 +19,7 @@ import java.awt.event.ActionListener;
 public class ControllerMenuDosen implements ActionListener {
     Aplikasi model;
     MenuDosen view;
+    Dosen d;
 
     public ControllerMenuDosen(Aplikasi model) {
         this.model = model;
@@ -25,6 +28,19 @@ public class ControllerMenuDosen implements ActionListener {
         view.addListener(this);
     }
 
+    public ControllerMenuDosen(Aplikasi model, Dosen d) {
+        this.model = model;
+        view = new MenuDosen();
+        view.setVisible(true);
+        view.addListener(this);
+        this.d = d;
+        view.setLblForName(d.getName());
+        view.setLblForID(d.getNIP());
+        view.setLblForTipe(d.getTipe());
+    }
+    
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();

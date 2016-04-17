@@ -49,10 +49,24 @@ public class Database {
         }
     }
 
-    public Dosen getDosen(int nip) {
+    public Dosen getDosen(long nip) {
         Dosen d = null;
         try {
             String query = "SELECT * FROM `dosen` WHERE `nip` = " + nip;
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                d = new Dosen(rs.getLong(3), rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return d;
+    }
+    
+    public Dosen getDosenByUsrnm(String usnm) {
+        Dosen d = null;
+        try {
+            String query = "SELECT * FROM `dosen` WHERE `username` = " + "'" + usnm + "'";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 d = new Dosen(rs.getLong(3), rs.getString(1));
@@ -92,10 +106,24 @@ public class Database {
         }
     }
 
-    public Mahasiswa getMahasiswa(int nim) {
+    public Mahasiswa getMahasiswa(long nim) {
         Mahasiswa m = null;
         try {
             String query = "SELECT * FROM `mahasiswa` WHERE `nim` = " + nim;
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                m = new Mahasiswa(rs.getLong(3), rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return m;
+    }
+    
+    public Mahasiswa getMahasiswaByUsrnm(String usrnm) {
+        Mahasiswa m = null;
+        try {
+            String query = "SELECT * FROM `mahasiswa` WHERE `username` = " + "'" + usrnm + "'";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 m = new Mahasiswa(rs.getLong(3), rs.getString(1));

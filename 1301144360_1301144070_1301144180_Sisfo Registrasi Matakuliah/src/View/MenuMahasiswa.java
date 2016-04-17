@@ -144,9 +144,9 @@ public class MenuMahasiswa extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(lblforid))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblfortipe, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblfortipe, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
@@ -185,6 +185,18 @@ public class MenuMahasiswa extends javax.swing.JFrame {
     public JButton getBtnSubmit() {
         return btnSubmit;
     }  
+    
+    public void setLblForName(String lblForName) {
+        this.lblforname.setText(lblForName);
+    }
+
+    public void setLblForTipe(String lblForTipe) {
+        this.lblfortipe.setText(lblForTipe);
+    }
+
+    public void setLblForID(long lblID) {
+        this.lblforid.setText(Long.toString(lblID));
+    }
     
     public void addListener(ActionListener e) {
         btnLogout.addActionListener(e);

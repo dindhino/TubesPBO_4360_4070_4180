@@ -36,21 +36,32 @@ public class Aplikasi {
     
 
     /*======================================================== DOSEN ========================================================*/
-    public void addDosen(Dosen dsn) {
-        daftarDosen.add(dsn);
+    public void addDosen(String nama, long nip, String password) {
+        Dosen d = new Dosen(nama, nip, password);
+        daftarDosen.add(d);
+        con.saveDosen(d);
     }
 
     public Dosen getDosen(long id) {
-        Dosen a = new Dosen();
-        for (int i = 0; i < daftarDosen.size(); i++) {
-            if (daftarDosen.get(i).getNIP() == id) {
-                a = daftarDosen.get(i);
-            } else {
-                continue;
+        for (Dosen d : daftarDosen) {
+            if (d.getNIP() == id) {
+                return d;
             }
         }
-
-        return a;
+        Dosen d = con.getDosen(id);
+        daftarDosen.add(d);
+        return d;
+    }
+    
+    public Dosen getDosenByUsrnm(String unm) {
+        for (Dosen d : daftarDosen) {
+            if (d.getUsername().equals(unm)) {
+                return d;
+            }
+        }
+        Dosen d = con.getDosenByUsrnm(unm);
+        daftarDosen.add(d);
+        return d;
     }
 
     public void deleteDosen(long id) {
@@ -66,21 +77,32 @@ public class Aplikasi {
     /*=======================================================================================================================*/
 
  /*======================================================= MAHASISWA =====================================================*/
-    public void addMahasiswa(Mahasiswa mhs) {
-        daftarMahasiswa.add(mhs);
+    public void addMahasiswa(String nama, long nip, String password) {
+        Mahasiswa m = new Mahasiswa(nama, nip, password);
+        daftarMahasiswa.add(m);
+        con.saveMahasiswa(m);
     }
 
     public Mahasiswa getMahasiswa(long id) {
-        Mahasiswa a = new Mahasiswa();
-        for (int i = 0; i < daftarMahasiswa.size(); i++) {
-            if (daftarMahasiswa.get(i).getNIM() == id) {
-                a = daftarMahasiswa.get(i);
-            } else {
-                continue;
+        for (Mahasiswa m : daftarMahasiswa) {
+            if (m.getNIM() == id) {
+                return m;
             }
         }
-
-        return a;
+        Mahasiswa m = con.getMahasiswa(id);
+        daftarMahasiswa.add(m);
+        return m;
+    }
+    
+    public Mahasiswa getMahasiswaByUsrnm(String unm) {
+        for (Mahasiswa m : daftarMahasiswa) {
+            if (m.getUsername().equals(unm)) {
+                return m;
+            }
+        }
+        Mahasiswa m = con.getMahasiswaByUsrnm(unm);
+        daftarMahasiswa.add(m);
+        return m;
     }
 
     public void deleteMahasiswa(long id) {
