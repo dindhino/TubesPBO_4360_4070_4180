@@ -44,10 +44,10 @@ public class ControllerMenuMahasiswa implements ActionListener {
         Object source = e.getSource();
 
         if (source.equals(view.getBtnAdd())) {
-            new ControllerMenuMahasiswa(model);
+            new ControllerMenuMahasiswa(model, m);
             view.dispose();
         } else if (source.equals(view.getBtnRemove())) {
-            new ControllerMenuMahasiswa(model);
+            new ControllerMenuMahasiswa(model, m);
             view.dispose();
         } else if (source.equals(view.getBtnSubmit())) {
             new ControllerMatkulMhs(model, m);

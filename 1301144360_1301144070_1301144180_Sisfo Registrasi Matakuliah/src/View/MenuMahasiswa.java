@@ -6,7 +6,10 @@
 package View;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
+import javax.swing.JList;
+import sun.swing.JLightweightFrame;
 
 /**
  *
@@ -196,6 +199,34 @@ public class MenuMahasiswa extends javax.swing.JFrame {
 
     public void setLblForID(long lblID) {
         this.lblforid.setText(Long.toString(lblID));
+    }
+    
+    public JList getListPilMk() {
+        return lsPilMK;
+    }
+    
+    public JList getListMkPil() {
+        return lsMkPil;
+    }
+    
+    public int getSelectedMkPM(){
+        return Integer.parseInt((String)lsPilMK.getSelectedValue());
+    }
+    
+    public int getSelectedMkMP(){
+        return Integer.parseInt((String)lsMkPil.getSelectedValue());
+    }
+    
+    public void setListMkPM(String[] list) {
+        lsPilMK.setListData(list);
+    }
+    
+    public void setListMkPMP(String[] list) {
+        lsMkPil.setListData(list);
+    }
+    
+    public void addAdapter(MouseAdapter e){
+        lsPilMK.addMouseListener(e);
     }
     
     public void addListener(ActionListener e) {
