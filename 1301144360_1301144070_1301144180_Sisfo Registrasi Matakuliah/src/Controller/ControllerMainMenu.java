@@ -34,7 +34,7 @@ public class ControllerMainMenu implements ActionListener {
             new ControllerDorm(model);
             view.dispose();
         } else if (source.equals(view.getBtnReg())) {
-            
+            new ControllerSignUp(model);
         } else if (source.equals(view.getBtnExit())) {
             exit(0);
         }

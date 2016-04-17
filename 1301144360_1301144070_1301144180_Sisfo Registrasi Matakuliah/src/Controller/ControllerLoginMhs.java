@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.Aplikasi;
-import View.LoginDsn;
+import View.LoginMhs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -15,13 +15,13 @@ import javax.swing.JOptionPane;
  *
  * @author dindhino
  */
-public class ControllerLoginDsn implements ActionListener {
+public class ControllerLoginMhs implements ActionListener {
     Aplikasi model;
-    LoginDsn view;
+    LoginMhs view;
 
-    public ControllerLoginDsn(Aplikasi model) {
+    public ControllerLoginMhs(Aplikasi model) {
         this.model = model;
-        view = new LoginDsn();
+        view = new LoginMhs();
         view.setVisible(true);
         view.addListener(this);
     }
@@ -34,7 +34,7 @@ public class ControllerLoginDsn implements ActionListener {
             String unm = view.getUsername();
             String pwd = view.getPassword();
             if (unm.equals(pwd)) {
-                new ControllerMenuDosen(model);
+                new ControllerMainMenu(model);
                 view.dispose();
             } else {
                 JOptionPane.showMessageDialog(view, "Username atau Password salah");
@@ -45,5 +45,5 @@ public class ControllerLoginDsn implements ActionListener {
             new ControllerMainMenu(model);
             view.dispose();
         }
-    }
+    }    
 }

@@ -5,6 +5,12 @@
  */
 package View;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author dindhino
@@ -224,41 +230,90 @@ public class MenuDosen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuDosen().setVisible(true);
-            }
-        });
+    public JButton getBtnLogout() {
+        return btnLogout;
     }
 
+    public void setBtnLogout(JButton btnLogout) {
+        this.btnLogout = btnLogout;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLblForId() {
+        return lblForId;
+    }
+
+    public void setLblForId(JLabel lblForId) {
+        this.lblForId = lblForId;
+    }
+
+    public JLabel getLblForName() {
+        return lblForName;
+    }
+
+    public void setLblForName(JLabel lblForName) {
+        this.lblForName = lblForName;
+    }
+
+    public JLabel getLblForTipe() {
+        return lblForTipe;
+    }
+
+    public void setLblForTipe(JLabel lblForTipe) {
+        this.lblForTipe = lblForTipe;
+    }
+
+    public JLabel getLblID() {
+        return lblID;
+    }
+
+    public void setLblID(JLabel lblID) {
+        this.lblID = lblID;
+    }
+
+    public JLabel getLblNama() {
+        return lblNama;
+    }
+
+    public void setLblNama(JLabel lblNama) {
+        this.lblNama = lblNama;
+    }
+
+    public JLabel getLblTipe() {
+        return lblTipe;
+    }
+
+    public void setLblTipe(JLabel lblTipe) {
+        this.lblTipe = lblTipe;
+    }
+
+    public JLabel getLbldaftar() {
+        return lbldaftar;
+    }
+
+    public void setLbldaftar(JLabel lbldaftar) {
+        this.lbldaftar = lbldaftar;
+    }
+
+    public JTable getTblDaftarMhs() {
+        return tblDaftarMhs;
+    }
+
+    public void setTblDaftarMhs(JTable tblDaftarMhs) {
+        this.tblDaftarMhs = tblDaftarMhs;
+    }
+    
+    public void addListener(ActionListener e) {
+        btnLogout.addActionListener(e);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private javax.swing.JScrollPane jScrollPane1;
