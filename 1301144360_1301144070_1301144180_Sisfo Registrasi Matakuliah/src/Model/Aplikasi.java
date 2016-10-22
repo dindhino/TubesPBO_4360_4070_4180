@@ -41,6 +41,13 @@ public class Aplikasi {
         daftarDosen.add(d);
         con.saveDosen(d);
     }
+    
+    //sama dibikin 2 biar gak bentrok dan tidak mengubah kodingan sebelumnya
+    public void addDosen(String nama, long nip, String password,String status) {
+        Dosen d = new Dosen(nama, nip, password,status);
+        daftarDosen.add(d);
+        con.saveDosen(d);
+    }
 
     public Dosen getDosen(long id) {
         for (Dosen d : daftarDosen) {
